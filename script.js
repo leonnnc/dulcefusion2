@@ -4,15 +4,12 @@
   // ===== CONFIGURACIÓN DE WHATSAPP =====
   const WHATSAPP_NUMBER = '51999888777'; // ← CAMBIA por tu número real
 
-  // ===== Datos de productos con imágenes que SIEMPRE funcionan =====
-  // Usamos placehold.co para garantizar que las imágenes siempre se vean.
-  // Cuando tengas tus propias fotos, reemplaza la URL por: ./img/tu-foto.jpg
+  // ===== Datos de productos con SVG embebido (siempre visible) =====
   const productos = [
     {
       id: 1,
       nombre: 'Chocolate Clásico',
       sabor: 'Sabor intenso a chocolate',
-      imagen: 'https://placehold.co/600x400/4a2c1a/ffffff?text=Chocolate+Clasico&font=roboto',
       color: '#4a2c1a',
       precio: 5.00
     },
@@ -20,7 +17,6 @@
       id: 2,
       nombre: 'Blanco con Frutos Rojos',
       sabor: 'Chocolate blanco con frutos rojos',
-      imagen: 'https://placehold.co/600x400/fce4ec/8e3b5a?text=Blanco+con+Frutos+Rojos&font=roboto',
       color: '#fce4ec',
       precio: 5.00
     },
@@ -28,7 +24,6 @@
       id: 3,
       nombre: 'Caramelo Salado',
       sabor: 'Dulce caramelo con toque salado',
-      imagen: 'https://placehold.co/600x400/f4a261/ffffff?text=Caramelo+Salado&font=roboto',
       color: '#f4a261',
       precio: 5.00
     },
@@ -36,7 +31,6 @@
       id: 4,
       nombre: 'Doble Chocolate',
       sabor: 'Chocolate con chunks de chocolate',
-      imagen: 'https://placehold.co/600x400/2b1a13/ffffff?text=Doble+Chocolate&font=roboto',
       color: '#2b1a13',
       precio: 5.00
     },
@@ -44,7 +38,6 @@
       id: 5,
       nombre: 'Vegano / Sin Gluten',
       sabor: 'Opción vegana y sin gluten',
-      imagen: 'https://placehold.co/600x400/2a9d8f/ffffff?text=Vegano+Sin+Gluten&font=roboto',
       color: '#2a9d8f',
       precio: 5.00
     },
@@ -52,11 +45,43 @@
       id: 6,
       nombre: 'Naranja Cítrico',
       sabor: 'Toque cítrico de naranja',
-      imagen: 'https://placehold.co/600x400/ff8c42/ffffff?text=Naranja+Citrico&font=roboto',
       color: '#ff8c42',
       precio: 5.00
     }
   ];
+
+  // Genera un SVG de galleta/brookie con el color del producto
+  function generarSVGProducto(color) {
+    return `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+        <defs>
+          <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+            <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2" />
+          </radialGradient>
+        </defs>
+        <!-- Galleta base -->
+        <circle cx="100" cy="100" r="85" fill="${color}" stroke="rgba(0,0,0,0.15)" stroke-width="3"/>
+        <!-- Borde tostado -->
+        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="4"/>
+        <!-- Chunks/chispas de chocolate -->
+        <circle cx="70" cy="70" r="6" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="130" cy="130" r="5" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="110" cy="75" r="4" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="85" cy="125" r="5" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="125" cy="95" r="4" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="75" cy="115" r="4" fill="rgba(0,0,0,0.25)"/>
+        <!-- Textura -->
+        <circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="150" cy="150" r="3" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="60" cy="140" r="2" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="140" cy="60" r="2" fill="rgba(255,255,255,0.15)"/>
+        <!-- Brillo superior -->
+        <ellipse cx="100" cy="70" rx="40" ry="15" fill="rgba(255,255,255,0.1)"/>
+        <rect x="0" y="0" width="200" height="200" fill="url(#grad)"/>
+      </svg>
+    `;
+  }
 
   // ===== Estado del carrito =====
   let carrito = JSON.parse(localStorage.getItem('dulcefusion_carrito')) || [];
@@ -105,8 +130,7 @@
     productGrid.innerHTML = productos.map(p => `
       <article class="product-card" style="--product-color:${p.color};">
         <div class="product-image">
-          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy"
-               onerror="this.style.display='none'; this.parentElement.style.background='var(--product-color)'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.style.fontSize='3rem'; this.parentElement.innerHTML='<span style=\"font-size:3rem;\">🍪</span>';">
+          ${generarSVGProducto(p.color)}
         </div>
         <h3>${p.nombre}</h3>
         <span class="product-sabor">${p.sabor}</span>
@@ -175,8 +199,7 @@
     cartItems.innerHTML = carrito.map(item => `
       <div class="cart-item">
         <div class="cart-item-image">
-          <img src="${item.imagen}" alt="${item.nombre}"
-               onerror="this.style.display='none'; this.parentElement.style.background='${item.color}'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.style.fontSize='1.8rem'; this.parentElement.innerHTML='<span style=\"font-size:1.8rem;\">🍪</span>';">
+          ${generarSVGProducto(item.color)}
         </div>
         <div class="cart-item-info">
           <span class="cart-item-name">${item.nombre}</span>
