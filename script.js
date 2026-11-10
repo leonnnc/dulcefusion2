@@ -34,7 +34,7 @@
       id: 4,
       nombre: 'Doble Chocolate',
       sabor: 'Chocolate con chunks de chocolate',
-      imagen: 'https://images.unsplash.com/photo-1606313564200-e75d5e33085f?w=600&h=400&fit=crop',
+      imagen: 'https://entertainingwithbeth.com/wp-content/uploads/2016/03/EWB194_ChocChunkCookie_VERT.jpg',
       color: '#2b1a13',
       precio: 5.00
     },
