@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dulce Fusion - Tienda de Brookies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-icon">🍪</span>
+        <span class="logo-text">Dulce Fusion</span>
+      </div>
+
+      <div class="cart-trigger" id="cart-trigger" aria-label="Ver carrito">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Brookies a S/ 5.00</h1>
+      <p>La fusión perfecta entre brownie y galleta, en diferentes sabores y colores. Elige el tuyo.</p>
+      <div class="hero-actions">
+        <a href="#productos" class="btn btn-primary">Ver productos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section class="productos" id="productos">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestros sabores</h2>
+        <p>Todos a solo S/ 5.00 c/u</p>
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        <!-- Los productos se inyectan aquí con JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Carrito lateral (drawer) -->
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer-panel">
+      <div class="cart-header">
+        <h3>Tu carrito</h3>
+        <button class="cart-close" id="cart-close">×</button>
+      </div>
+
+      <div class="cart-items" id="cart-items">
+        <!-- Items del carrito -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span class="cart-total-value" id="cart-total">S/ 0.00</span>
+        </div>
+        <div class="cart-actions">
+          <button class="btn btn-outline btn-block" id="cart-clear">Vaciar carrito</button>
+          <button class="btn btn-primary btn-block" id="cart-checkout">Pagar - S/ 5.00 c/u</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modal de compra -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h3>Resumen de pedido</h3>
+        <button class="modal-close" id="modal-close">×</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-items"></div>
+        <div class="modal-total">
+          <strong>Total:</strong> <span id="modal-total">S/ 0.00</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <form id="checkout-form" class="checkout-form">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="checkout-name" required placeholder="Juan Pérez">
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="checkout-phone" required placeholder="999 888 777">
+          </div>
+          <div class="form-group">
+            <label>Dirección de entrega</label>
+            <input type="text" id="checkout-address" required placeholder="Av. Siempre Viva 123">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Confirmar pedido</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notificación -->
+  <div class="toast" id="toast">
+    <span id="toast-msg">Producto agregado al carrito</span>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="logo" style="margin-bottom: 12px;">
+        <span class="logo-icon">🍪</span>
+        <span class="logo-text">Dulce Fusion</span>
+      </div>
+      <p>Brookies artesanales &bull; Precio único S/ 5.00</p>
+      <p>&copy; 2026 Dulce Fusion. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
