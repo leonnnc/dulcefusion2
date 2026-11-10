@@ -4,13 +4,15 @@
   // ===== CONFIGURACIÓN DE WHATSAPP =====
   const WHATSAPP_NUMBER = '51999888777'; // ← CAMBIA por tu número real
 
-  // ===== Datos de productos con imágenes de brookies/postres =====
+  // ===== Datos de productos con imágenes que SIEMPRE funcionan =====
+  // Usamos placehold.co para garantizar que las imágenes siempre se vean.
+  // Cuando tengas tus propias fotos, reemplaza la URL por: ./img/tu-foto.jpg
   const productos = [
     {
       id: 1,
       nombre: 'Chocolate Clásico',
       sabor: 'Sabor intenso a chocolate',
-      imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7_d8oKhxPEvxaP2HQlzNNpD5R-AJgrlkJYOEPfq6X7yIXE6Qr0oaUaQ&s=10',
+      imagen: 'https://placehold.co/600x400/4a2c1a/ffffff?text=Chocolate+Clasico&font=roboto',
       color: '#4a2c1a',
       precio: 5.00
     },
@@ -18,7 +20,7 @@
       id: 2,
       nombre: 'Blanco con Frutos Rojos',
       sabor: 'Chocolate blanco con frutos rojos',
-      imagen: 'https://images.unsplash.com/photo-1551050485-c2a889f3c7ff?w=600&h=400&fit=crop',
+      imagen: 'https://placehold.co/600x400/fce4ec/8e3b5a?text=Blanco+con+Frutos+Rojos&font=roboto',
       color: '#fce4ec',
       precio: 5.00
     },
@@ -26,7 +28,7 @@
       id: 3,
       nombre: 'Caramelo Salado',
       sabor: 'Dulce caramelo con toque salado',
-      imagen: 'https://images.unsplash.com/photo-1488460801189-758677385725?w=600&h=400&fit=crop',
+      imagen: 'https://placehold.co/600x400/f4a261/ffffff?text=Caramelo+Salado&font=roboto',
       color: '#f4a261',
       precio: 5.00
     },
@@ -34,7 +36,7 @@
       id: 4,
       nombre: 'Doble Chocolate',
       sabor: 'Chocolate con chunks de chocolate',
-      imagen: 'https://entertainingwithbeth.com/wp-content/uploads/2016/03/EWB194_ChocChunkCookie_VERT.jpg',
+      imagen: 'https://placehold.co/600x400/2b1a13/ffffff?text=Doble+Chocolate&font=roboto',
       color: '#2b1a13',
       precio: 5.00
     },
@@ -42,7 +44,7 @@
       id: 5,
       nombre: 'Vegano / Sin Gluten',
       sabor: 'Opción vegana y sin gluten',
-      imagen: 'https://images.unsplash.com/photo-1508403183184-71fe99b91b98?w=600&h=400&fit=crop',
+      imagen: 'https://placehold.co/600x400/2a9d8f/ffffff?text=Vegano+Sin+Gluten&font=roboto',
       color: '#2a9d8f',
       precio: 5.00
     },
@@ -50,7 +52,7 @@
       id: 6,
       nombre: 'Naranja Cítrico',
       sabor: 'Toque cítrico de naranja',
-      imagen: 'https://images.unsplash.com/photo-1579784941543-499827d6142f?w=600&h=400&fit=crop',
+      imagen: 'https://placehold.co/600x400/ff8c42/ffffff?text=Naranja+Citrico&font=roboto',
       color: '#ff8c42',
       precio: 5.00
     }
