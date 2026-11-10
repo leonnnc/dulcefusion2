@@ -4,12 +4,13 @@
   // ===== CONFIGURACIÓN DE WHATSAPP =====
   const WHATSAPP_NUMBER = '51999888777'; // ← CAMBIA por tu número real
 
-  // ===== Datos de productos con SVG embebido (siempre visible) =====
-  const productos = [
+  // ===== Datos por defecto de productos =====
+  const productosPorDefecto = [
     {
       id: 1,
       nombre: 'Chocolate Clásico',
       sabor: 'Sabor intenso a chocolate',
+      imagen: '',
       color: '#4a2c1a',
       precio: 5.00
     },
@@ -17,6 +18,7 @@
       id: 2,
       nombre: 'Blanco con Frutos Rojos',
       sabor: 'Chocolate blanco con frutos rojos',
+      imagen: '',
       color: '#fce4ec',
       precio: 5.00
     },
@@ -24,6 +26,7 @@
       id: 3,
       nombre: 'Caramelo Salado',
       sabor: 'Dulce caramelo con toque salado',
+      imagen: '',
       color: '#f4a261',
       precio: 5.00
     },
@@ -31,6 +34,7 @@
       id: 4,
       nombre: 'Doble Chocolate',
       sabor: 'Chocolate con chunks de chocolate',
+      imagen: '',
       color: '#2b1a13',
       precio: 5.00
     },
@@ -38,6 +42,7 @@
       id: 5,
       nombre: 'Vegano / Sin Gluten',
       sabor: 'Opción vegana y sin gluten',
+      imagen: '',
       color: '#2a9d8f',
       precio: 5.00
     },
@@ -45,42 +50,33 @@
       id: 6,
       nombre: 'Naranja Cítrico',
       sabor: 'Toque cítrico de naranja',
+      imagen: '',
       color: '#ff8c42',
       precio: 5.00
     }
   ];
 
-  // Genera un SVG de galleta/brookie con el color del producto
-  function generarSVGProducto(color) {
-    return `
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
-        <defs>
-          <radialGradient id="grad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
-            <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2" />
-          </radialGradient>
-        </defs>
-        <!-- Galleta base -->
-        <circle cx="100" cy="100" r="85" fill="${color}" stroke="rgba(0,0,0,0.15)" stroke-width="3"/>
-        <!-- Borde tostado -->
-        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="4"/>
-        <!-- Chunks/chispas de chocolate -->
-        <circle cx="70" cy="70" r="6" fill="rgba(0,0,0,0.25)"/>
-        <circle cx="130" cy="130" r="5" fill="rgba(0,0,0,0.25)"/>
-        <circle cx="110" cy="75" r="4" fill="rgba(0,0,0,0.25)"/>
-        <circle cx="85" cy="125" r="5" fill="rgba(0,0,0,0.25)"/>
-        <circle cx="125" cy="95" r="4" fill="rgba(0,0,0,0.25)"/>
-        <circle cx="75" cy="115" r="4" fill="rgba(0,0,0,0.25)"/>
-        <!-- Textura -->
-        <circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.15)"/>
-        <circle cx="150" cy="150" r="3" fill="rgba(255,255,255,0.15)"/>
-        <circle cx="60" cy="140" r="2" fill="rgba(255,255,255,0.15)"/>
-        <circle cx="140" cy="60" r="2" fill="rgba(255,255,255,0.15)"/>
-        <!-- Brillo superior -->
-        <ellipse cx="100" cy="70" rx="40" ry="15" fill="rgba(255,255,255,0.1)"/>
-        <rect x="0" y="0" width="200" height="200" fill="url(#grad)"/>
-      </svg>
-    `;
+  // ===== Cargar configuración guardada o usar por defecto =====
+  let productos = cargarConfiguracion();
+
+  function cargarConfiguracion() {
+    const guardada = localStorage.getItem('dulcefusion_config');
+    if (guardada) {
+      try {
+        const config = JSON.parse(guardada);
+        return productosPorDefecto.map(p => {
+          const c = config.find(item => item.id === p.id);
+          return c ? { ...p, ...c } : p;
+        });
+      } catch (e) {
+        console.error('Error al cargar configuración:', e);
+      }
+    }
+    return productosPorDefecto.map(p => ({ ...p }));
+  }
+
+  function guardarConfiguracion() {
+    localStorage.setItem('dulcefusion_config', JSON.stringify(productos));
   }
 
   // ===== Estado del carrito =====
@@ -125,12 +121,40 @@
     checkoutForm.addEventListener('submit', handleCheckout);
   }
 
+  // ===== Generar SVG de galleta (fallback si no hay imagen) =====
+  function generarSVGProducto(color) {
+    return `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+        <defs>
+          <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+            <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2" />
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="85" fill="${color}" stroke="rgba(0,0,0,0.15)" stroke-width="3"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="4"/>
+        <circle cx="70" cy="70" r="6" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="130" cy="130" r="5" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="110" cy="75" r="4" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="85" cy="125" r="5" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="125" cy="95" r="4" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="75" cy="115" r="4" fill="rgba(0,0,0,0.25)"/>
+        <circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="150" cy="150" r="3" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="60" cy="140" r="2" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="140" cy="60" r="2" fill="rgba(255,255,255,0.15)"/>
+        <ellipse cx="100" cy="70" rx="40" ry="15" fill="rgba(255,255,255,0.1)"/>
+        <rect x="0" y="0" width="200" height="200" fill="url(#grad)"/>
+      </svg>
+    `;
+  }
+
   // ===== Render productos =====
   function renderProductos() {
     productGrid.innerHTML = productos.map(p => `
       <article class="product-card" style="--product-color:${p.color};">
         <div class="product-image">
-          ${generarSVGProducto(p.color)}
+          ${p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='${generarSVGProducto(p.color).replace(/'/g, "\\'")}';">` : generarSVGProducto(p.color)}
         </div>
         <h3>${p.nombre}</h3>
         <span class="product-sabor">${p.sabor}</span>
@@ -199,7 +223,7 @@
     cartItems.innerHTML = carrito.map(item => `
       <div class="cart-item">
         <div class="cart-item-image">
-          ${generarSVGProducto(item.color)}
+          ${item.imagen ? `<img src="${item.imagen}" alt="${item.nombre}" onerror="this.style.display='none'; this.parentElement.innerHTML='${generarSVGProducto(item.color).replace(/'/g, "\\'")}';">` : generarSVGProducto(item.color)}
         </div>
         <div class="cart-item-info">
           <span class="cart-item-name">${item.nombre}</span>
@@ -313,9 +337,17 @@
     }, 3500);
   }
 
+  // Exponer funciones globales para uso en HTML (onclick)
   window.addToCart = addToCart;
   window.changeQty = changeQty;
   window.removeItem = removeItem;
+
+  // Exponer productos y guardar para el panel admin
+  window.dulcefusion = {
+    productos,
+    guardarConfiguracion,
+    cargarConfiguracion
+  };
 
   document.addEventListener('DOMContentLoaded', init);
 
