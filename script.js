@@ -4,13 +4,13 @@
   // ===== CONFIGURACIÓN DE WHATSAPP =====
   const WHATSAPP_NUMBER = '51999888777'; // ← CAMBIA por tu número real
 
-  // ===== Datos de productos con imágenes confiables =====
+  // ===== Datos de productos con imágenes de brookies/postres =====
   const productos = [
     {
       id: 1,
       nombre: 'Chocolate Clásico',
       sabor: 'Sabor intenso a chocolate',
-      imagen: 'https://picsum.photos/seed/dulce1/600/400',
+      imagen: 'https://images.unsplash.com/photo-1606313564200-e75d5e33085f?w=600&h=400&fit=crop',
       color: '#4a2c1a',
       precio: 5.00
     },
@@ -18,7 +18,7 @@
       id: 2,
       nombre: 'Blanco con Frutos Rojos',
       sabor: 'Chocolate blanco con frutos rojos',
-      imagen: 'https://picsum.photos/seed/dulce2/600/400',
+      imagen: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop',
       color: '#fce4ec',
       precio: 5.00
     },
@@ -26,7 +26,7 @@
       id: 3,
       nombre: 'Caramelo Salado',
       sabor: 'Dulce caramelo con toque salado',
-      imagen: 'https://picsum.photos/seed/dulce3/600/400',
+      imagen: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=400&fit=crop',
       color: '#f4a261',
       precio: 5.00
     },
@@ -34,7 +34,7 @@
       id: 4,
       nombre: 'Doble Chocolate',
       sabor: 'Chocolate con chunks de chocolate',
-      imagen: 'https://picsum.photos/seed/dulce4/600/400',
+      imagen: 'https://images.unsplash.com/photo-1606313564200-e75d5e33085f?w=600&h=400&fit=crop',
       color: '#2b1a13',
       precio: 5.00
     },
@@ -42,7 +42,7 @@
       id: 5,
       nombre: 'Vegano / Sin Gluten',
       sabor: 'Opción vegana y sin gluten',
-      imagen: 'https://picsum.photos/seed/dulce5/600/400',
+      imagen: 'https://images.unsplash.com/photo-1559338353-1293767485bf?w=600&h=400&fit=crop',
       color: '#2a9d8f',
       precio: 5.00
     },
@@ -50,7 +50,7 @@
       id: 6,
       nombre: 'Naranja Cítrico',
       sabor: 'Toque cítrico de naranja',
-      imagen: 'https://picsum.photos/seed/dulce6/600/400',
+      imagen: 'https://images.unsplash.com/photo-1544036531-c8a76260d47f?w=600&h=400&fit=crop',
       color: '#ff8c42',
       precio: 5.00
     }
