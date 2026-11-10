@@ -18,7 +18,7 @@
       id: 2,
       nombre: 'Blanco con Frutos Rojos',
       sabor: 'Chocolate blanco con frutos rojos',
-      imagen: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop',
+      imagen: 'https://images.unsplash.com/photo-1551050485-c2a889f3c7ff?w=600&h=400&fit=crop',
       color: '#fce4ec',
       precio: 5.00
     },
@@ -26,7 +26,7 @@
       id: 3,
       nombre: 'Caramelo Salado',
       sabor: 'Dulce caramelo con toque salado',
-      imagen: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=400&fit=crop',
+      imagen: 'https://images.unsplash.com/photo-1488460801189-758677385725?w=600&h=400&fit=crop',
       color: '#f4a261',
       precio: 5.00
     },
@@ -42,7 +42,7 @@
       id: 5,
       nombre: 'Vegano / Sin Gluten',
       sabor: 'Opción vegana y sin gluten',
-      imagen: 'https://images.unsplash.com/photo-1559338353-1293767485bf?w=600&h=400&fit=crop',
+      imagen: 'https://images.unsplash.com/photo-1508403183184-71fe99b91b98?w=600&h=400&fit=crop',
       color: '#2a9d8f',
       precio: 5.00
     },
@@ -50,7 +50,7 @@
       id: 6,
       nombre: 'Naranja Cítrico',
       sabor: 'Toque cítrico de naranja',
-      imagen: 'https://images.unsplash.com/photo-1544036531-c8a76260d47f?w=600&h=400&fit=crop',
+      imagen: 'https://images.unsplash.com/photo-1579784941543-499827d6142f?w=600&h=400&fit=crop',
       color: '#ff8c42',
       precio: 5.00
     }
