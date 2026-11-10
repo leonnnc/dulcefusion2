@@ -10,7 +10,7 @@
       id: 1,
       nombre: 'Chocolate Clásico',
       sabor: 'Sabor intenso a chocolate',
-      imagen: 'https://images.unsplash.com/photo-1606313564200-e75d5e33085f?w=600&h=400&fit=crop',
+      imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7_d8oKhxPEvxaP2HQlzNNpD5R-AJgrlkJYOEPfq6X7yIXE6Qr0oaUaQ&s=10',
       color: '#4a2c1a',
       precio: 5.00
     },
